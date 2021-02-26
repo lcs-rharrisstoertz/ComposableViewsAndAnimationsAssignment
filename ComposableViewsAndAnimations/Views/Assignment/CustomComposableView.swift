@@ -17,9 +17,9 @@ import SwiftUI
 struct CustomComposableView: View {
     
 // percent completed/correct
-var score: CGFloat
+@State private var score: CGFloat
     
-var fillToValue: CGFloat = 0
+@State private var fillToValue: CGFloat = 0
     
     var body: some View {
         GeometryReader { geometry in
@@ -41,11 +41,5 @@ var fillToValue: CGFloat = 0
                 Spacer()
             }
         }
-    }
-}
-
-struct CustomComposableView_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomComposableView()
     }
 }
