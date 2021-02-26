@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomComposableDescriptionView: View {
     
     // MARK: Stored properties
-    @State private var score: CGFloat
+    @State var score: CGFloat
     
     // MARK: Computed properties
     var body: some View {

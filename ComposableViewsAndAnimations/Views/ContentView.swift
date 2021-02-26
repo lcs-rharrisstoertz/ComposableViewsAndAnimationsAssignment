@@ -90,7 +90,7 @@ struct ContentView: View {
                 
                 Section(header: Text("Assignment")) {
 
-                    NavigationLink(destination: CustomComposableDescriptionView()) {
+                    NavigationLink(destination: CustomComposableDescriptionView(score: 50)) {
                         
                         SimpleListItemView(title: "Create a composable view",
                                            caption: "Make your own reusable view using animations")

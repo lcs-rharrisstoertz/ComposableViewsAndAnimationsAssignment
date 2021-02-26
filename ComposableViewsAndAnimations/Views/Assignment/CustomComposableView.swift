@@ -19,7 +19,11 @@ struct CustomComposableView: View {
     // percent completed/correct
     @State var score: CGFloat
     
+    //how far to fill meter
     @State var fillToValue: CGFloat = 0
+    
+    //horizontal offset
+    @State var offsetX: CGFloat = 0
     
     var body: some View {
         GeometryReader { geometry in
@@ -29,14 +33,17 @@ struct CustomComposableView: View {
                     Rectangle()
                         .fill(Color.gray)
                         .frame(width: (geometry.size.width - 30), height: 30)
-                        .onAppear {
-                            withAnimation(.easeOut) {
-                                fillToValue = (geometry.size.width - 30) / 100 * score
-                            }
-                        }
                     Rectangle()
                         .fill(LinearGradient(gradient: Gradient(colors: [Color.red, Color.green]), startPoint: .leading, endPoint: .trailing))
-                        .frame(width: (geometry.size.width - 30), height: 30, alignment: .leading)
+                        .frame(width: (fillToValue), height: 30, alignment: .leading)
+                        .offset(offsetX)
+                        .onAppear {
+                            offsetX = 0
+                            withAnimation(.easeOut) {
+                                fillToValue = (geometry.size.width - 30) / 100 * score
+                                offset = (geometry.size.width - 30) / 100 * (100 - score)
+                            }
+                        }
                 }
                 Spacer()
             }
