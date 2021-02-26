@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomComposableDescriptionView: View {
     
     // MARK: Stored properties
-    @State private var phrase: String = ""
+    @State private var score: CGFloat
     
     // MARK: Computed properties
     var body: some View {
@@ -32,14 +32,16 @@ struct CustomComposableDescriptionView: View {
                         If the view accepts a parameter, provide a control to enter the input below.
                         """)
                     
-                    TextField("Enter an input value", text: $phrase)
+                    Slider(value: $score, in: 0...100, step: 1.0) {
+                        Text("Score")
+                    }
                     
                 }
                 .padding(.bottom)
                 
             }
             
-            NavigationLink(destination: CustomComposableView()) {
+            NavigationLink(destination: CustomComposableView(score: score)) {
                 SimpleListItemView(title: "My Composable View",
                                    caption: "A brief description of my view")
             }
@@ -51,10 +53,3 @@ struct CustomComposableDescriptionView: View {
     }
 }
 
-struct CustomComposableDescriptionView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            CustomComposableDescriptionView()
-        }
-    }
-}

@@ -15,17 +15,28 @@
 import SwiftUI
 
 struct CustomComposableView: View {
+    
+// percent completed/correct
+var score: CGFloat
+    
+var fillToValue: CGFloat = 0
+    
     var body: some View {
         GeometryReader { geometry in
             HStack {
                 Spacer()
                 ZStack{
                     Rectangle()
-                        .fill(LinearGradient(gradient: Gradient(colors: [Color.red, Color.green]), startPoint: .leading, endPoint: .trailing))
-                        .frame(width: (geometry.size.width - 30), height: 30, alignment: .leading)
-                    Rectangle()
                         .fill(Color.gray)
                         .frame(width: (geometry.size.width - 30), height: 30)
+                        .onAppear {
+                            withAnimation(.easeOut) {
+                                fillToValue = (geometry.size.width - 30) / 100 * score
+                        }
+                        }
+                    Rectangle()
+                        .fill(LinearGradient(gradient: Gradient(colors: [Color.red, Color.green]), startPoint: .leading, endPoint: .trailing))
+                        .frame(width: (geometry.size.width - 30), height: 30, alignment: .leading)
                 }
                 Spacer()
             }
