@@ -10,16 +10,16 @@
  (or positioned at the 100%, 66%, and 33% points)
  and if you got 7, it would load to 7, and you'd get 1 star
  and when it reaches a star, the star turns from grey to yellow and expands
-*/
+ */
 
 import SwiftUI
 
 struct CustomComposableView: View {
     
-// percent completed/correct
-@State private var score: CGFloat
+    // percent completed/correct
+    @State var score: CGFloat
     
-@State private var fillToValue: CGFloat = 0
+    @State var fillToValue: CGFloat = 0
     
     var body: some View {
         GeometryReader { geometry in
@@ -32,7 +32,7 @@ struct CustomComposableView: View {
                         .onAppear {
                             withAnimation(.easeOut) {
                                 fillToValue = (geometry.size.width - 30) / 100 * score
-                        }
+                            }
                         }
                     Rectangle()
                         .fill(LinearGradient(gradient: Gradient(colors: [Color.red, Color.green]), startPoint: .leading, endPoint: .trailing))
