@@ -27,7 +27,7 @@ struct CustomComposableView: View {
             HStack {
                 Spacer()
                 ZStack{
-                    Rectangle()
+                    RoundedRectangle(cornerRadius: 25, style: .continuous)
                         .fill(LinearGradient(gradient: Gradient(colors: [Color.red, Color.green]), startPoint: .leading, endPoint: .trailing))
                         .frame(width: (geometry.size.width - 30), height: 30, alignment: .leading)
                     Rectangle()
