@@ -28,9 +28,6 @@ struct CustomComposableView: View {
                 Spacer()
                 ZStack{
                     Rectangle()
-                        .fill(Color.gray)
-                        .frame(width: (geometry.size.width - 30), height: 30, alignment: .leading)
-                    Rectangle()
                         .fill(LinearGradient(gradient: Gradient(colors: [Color.red, Color.green]), startPoint: .leading, endPoint: .trailing))
                         .frame(width: (geometry.size.width - 30), height: 30, alignment: .leading)
                     Rectangle()
@@ -39,7 +36,7 @@ struct CustomComposableView: View {
                         .frame(width: (geometry.size.width - 30), height: 30)
                         .offset(x: offsetX)
                         .onAppear {
-                            withAnimation(.easeOut) {
+                            withAnimation(.linear(duration: 2)) {
                                 offsetX = (geometry.size.width - 30) / 100 * score
                             }
                         }
