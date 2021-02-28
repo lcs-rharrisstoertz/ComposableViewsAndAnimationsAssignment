@@ -22,6 +22,12 @@ struct CustomComposableView: View {
     //horizontal offset
     @State var offsetX: CGFloat = 0
     
+    //controls the size of the stars
+    @State var starScale: CGFloat = 0
+    
+    //controls the size of the stars
+    @State var starColor: Color = Color.gray
+    
     var body: some View {
         GeometryReader { geometry in
             HStack {
@@ -40,6 +46,35 @@ struct CustomComposableView: View {
                                 offsetX = (geometry.size.width - 30) / 100 * score
                             }
                         }
+                    HStack {
+                        Circle()
+                            .scaleEffect(starScale)
+                            .foregroundColor(starColor)
+                            .onAppear {
+                                withAnimation(.linear) {
+                                    starScale = 1
+                                    starColor = Color.yellow
+                                }
+                            }
+                        Circle()
+                            .scaleEffect(starScale)
+                            .foregroundColor(starColor)
+                            .onAppear {
+                                withAnimation(.linear) {
+                                    starScale = 1
+                                    starColor = Color.yellow
+                                }
+                            }
+                        Circle()
+                            .scaleEffect(starScale)
+                            .foregroundColor(starColor)
+                            .onAppear {
+                                withAnimation(.linear) {
+                                    starScale = 1
+                                    starColor = Color.yellow
+                                }
+                            }
+                    }
                 }
                 Spacer()
             }
