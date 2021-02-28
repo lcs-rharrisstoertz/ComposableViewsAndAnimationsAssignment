@@ -22,10 +22,12 @@ struct CustomComposableView: View {
     //horizontal offset
     @State var offsetX: CGFloat = 0
     
-    //controls the size of the stars
-    @State var starScale: CGFloat = 0
+    //controls the size of the different stars
+    @State var starScaleA: CGFloat = 0
+    @State var starScaleB: CGFloat = 0
+    @State var starScaleC: CGFloat = 0
     
-    //controls the size of the stars
+    //controls the color of the stars
     @State var starColor: Color = Color.gray
     
     var body: some View {
@@ -48,29 +50,29 @@ struct CustomComposableView: View {
                         }
                     HStack {
                         Circle()
-                            .scaleEffect(starScale)
+                            .scaleEffect(starScaleA)
                             .foregroundColor(starColor)
                             .onAppear {
-                                withAnimation(.linear) {
-                                    starScale = 1
+                                withAnimation(Animation.linear(duration: 0.5).delay(0.33)) {
+                                    starScaleA = 0.35
                                     starColor = Color.yellow
                                 }
                             }
                         Circle()
-                            .scaleEffect(starScale)
+                            .scaleEffect(starScaleB)
                             .foregroundColor(starColor)
                             .onAppear {
-                                withAnimation(.linear) {
-                                    starScale = 1
+                                withAnimation(Animation.linear(duration: 0.5).delay(0.66)) {
+                                    starScaleB = 0.35
                                     starColor = Color.yellow
                                 }
                             }
                         Circle()
-                            .scaleEffect(starScale)
+                            .scaleEffect(starScaleC)
                             .foregroundColor(starColor)
                             .onAppear {
-                                withAnimation(.linear) {
-                                    starScale = 1
+                                withAnimation(Animation.linear(duration: 0.5).delay(1)) {
+                                    starScaleC = 0.35
                                     starColor = Color.yellow
                                 }
                             }
