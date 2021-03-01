@@ -54,11 +54,13 @@ struct CustomComposableView: View {
                         Circle()
                             .scaleEffect(starScaleA)
                             .foregroundColor(starColorA)
-                            .offset(x: (geometry.size.width - 30)/4)
+                            .offset(x: (geometry.size.width - 30)/6)
                             .onAppear {
                                 withAnimation(Animation.linear(duration: 0.25).delay(0.5)) {
+                                    if score > 33 {
                                     starScaleA = 0.35
                                     starColorA = Color.yellow
+                                    }
                                 }
                             }
                         Circle()
@@ -67,8 +69,10 @@ struct CustomComposableView: View {
                             .offset(x: (geometry.size.width - 30)/6)
                             .onAppear {
                                 withAnimation(Animation.linear(duration: 0.25).delay(1.17)) {
+                                    if score > 67 {
                                     starScaleB = 0.35
                                     starColorB = Color.yellow
+                                    }
                                 }
                             }
                         Circle()
@@ -77,8 +81,10 @@ struct CustomComposableView: View {
                             .offset(x: (geometry.size.width - 30)/12)
                             .onAppear {
                                 withAnimation(Animation.linear(duration: 0.25).delay(1.84)) {
+                                    if score == 100 {
                                     starScaleC = 0.35
                                     starColorC = Color.yellow
+                                    }
                                 }
                             }
                     }
