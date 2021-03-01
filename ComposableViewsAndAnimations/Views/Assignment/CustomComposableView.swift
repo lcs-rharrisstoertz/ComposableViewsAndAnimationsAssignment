@@ -74,7 +74,8 @@ struct CustomComposableView: View {
                         Star()
                             .scaleEffect(starScaleA)
                             .foregroundColor(starColorA)
-                            .offset(x: (geometry.size.width - 30)/6)
+                            .offset(x: (geometry.size.width - 30)/4)
+                            .frame(width: 100, height: 100)
                             .onAppear {
                                 withAnimation(Animation.linear(duration: 0.25).delay(0.5)) {
                                     if score > 33 {
@@ -87,6 +88,7 @@ struct CustomComposableView: View {
                             .scaleEffect(starScaleB)
                             .foregroundColor(starColorB)
                             .offset(x: (geometry.size.width - 30)/6)
+                            .frame(width: 100, height: 100)
                             .onAppear {
                                 withAnimation(Animation.linear(duration: 0.25).delay(1.17)) {
                                     if score > 67 {
@@ -99,6 +101,7 @@ struct CustomComposableView: View {
                             .scaleEffect(starScaleC)
                             .foregroundColor(starColorC)
                             .offset(x: (geometry.size.width - 30)/12)
+                            .frame(width: 100, height: 100)
                             .onAppear {
                                 withAnimation(Animation.linear(duration: 0.25).delay(1.84)) {
                                     if score == 100 {
