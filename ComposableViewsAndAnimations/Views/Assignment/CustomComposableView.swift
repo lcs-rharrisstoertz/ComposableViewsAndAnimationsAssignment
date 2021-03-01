@@ -28,7 +28,9 @@ struct CustomComposableView: View {
     @State var starScaleC: CGFloat = 0
     
     //controls the color of the stars
-    @State var starColor: Color = Color.gray
+    @State var starColorA: Color = Color.gray
+    @State var starColorB: Color = Color.gray
+    @State var starColorC: Color = Color.gray
     
     var body: some View {
         GeometryReader { geometry in
@@ -44,39 +46,39 @@ struct CustomComposableView: View {
                         .frame(width: (geometry.size.width - 30), height: 30)
                         .offset(x: offsetX)
                         .onAppear {
-                            withAnimation(.linear(duration: 2)) {
+                            withAnimation(.linear(duration: (2 * Double(score) / 100))) {
                                 offsetX = (geometry.size.width - 30) / 100 * score
                             }
                         }
                     HStack{
                         Circle()
                             .scaleEffect(starScaleA)
-                            .foregroundColor(starColor)
+                            .foregroundColor(starColorA)
                             .offset(x: (geometry.size.width - 30)/4)
                             .onAppear {
-                                withAnimation(Animation.linear(duration: 0.25).delay(0.66)) {
+                                withAnimation(Animation.linear(duration: 0.25).delay(0.5)) {
                                     starScaleA = 0.35
-                                    starColor = Color.yellow
+                                    starColorA = Color.yellow
                                 }
                             }
                         Circle()
                             .scaleEffect(starScaleB)
-                            .foregroundColor(starColor)
+                            .foregroundColor(starColorB)
                             .offset(x: (geometry.size.width - 30)/6)
                             .onAppear {
-                                withAnimation(Animation.linear(duration: 0.25).delay(1.33)) {
+                                withAnimation(Animation.linear(duration: 0.25).delay(1.17)) {
                                     starScaleB = 0.35
-                                    starColor = Color.yellow
+                                    starColorB = Color.yellow
                                 }
                             }
                         Circle()
                             .scaleEffect(starScaleC)
-                            .foregroundColor(starColor)
+                            .foregroundColor(starColorC)
                             .offset(x: (geometry.size.width - 30)/12)
                             .onAppear {
-                                withAnimation(Animation.linear(duration: 0.25).delay(2)) {
+                                withAnimation(Animation.linear(duration: 0.25).delay(1.84)) {
                                     starScaleC = 0.35
-                                    starColor = Color.yellow
+                                    starColorC = Color.yellow
                                 }
                             }
                     }
