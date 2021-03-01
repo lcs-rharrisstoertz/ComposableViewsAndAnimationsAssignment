@@ -32,6 +32,26 @@ struct CustomComposableView: View {
     @State var starColorB: Color = Color.gray
     @State var starColorC: Color = Color.gray
     
+    struct Star: Shape {
+        func path(in rect: CGRect) -> Path {
+            var path = Path()
+            
+            path.move(to: CGPoint(x: 0.5 * rect.width, y: 0))
+            path.addLine(to: CGPoint(x: 0.65 * rect.width, y: 0.3 * rect.height))
+            path.addLine(to: CGPoint(x: 0.975 * rect.width, y: 0.35 * rect.height))
+            path.addLine(to: CGPoint(x: 0.75 * rect.width, y: 0.575 * rect.height))
+            path.addLine(to: CGPoint(x: 0.8 * rect.width, y: 0.9 * rect.height))
+            path.addLine(to: CGPoint(x: 0.5 * rect.width, y: 0.75 * rect.height))
+            path.addLine(to: CGPoint(x: 0.2 * rect.width, y: 0.9 * rect.height))
+            path.addLine(to: CGPoint(x: 0.25 * rect.width, y: 0.575 * rect.height))
+            path.addLine(to: CGPoint(x: 0.025 * rect.width, y: 0.35 * rect.height))
+            path.addLine(to: CGPoint(x: 0.35 * rect.width, y: 0.3 * rect.height))
+            path.addLine(to: CGPoint(x: 0.35 * rect.width, y: 0.3 * rect.height))
+            
+            return path
+        }
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             HStack {
@@ -51,7 +71,7 @@ struct CustomComposableView: View {
                             }
                         }
                     HStack{
-                        Circle()
+                        Star()
                             .scaleEffect(starScaleA)
                             .foregroundColor(starColorA)
                             .offset(x: (geometry.size.width - 30)/6)
@@ -63,7 +83,7 @@ struct CustomComposableView: View {
                                     }
                                 }
                             }
-                        Circle()
+                        Star()
                             .scaleEffect(starScaleB)
                             .foregroundColor(starColorB)
                             .offset(x: (geometry.size.width - 30)/6)
@@ -75,7 +95,7 @@ struct CustomComposableView: View {
                                     }
                                 }
                             }
-                        Circle()
+                        Star()
                             .scaleEffect(starScaleC)
                             .foregroundColor(starColorC)
                             .offset(x: (geometry.size.width - 30)/12)
