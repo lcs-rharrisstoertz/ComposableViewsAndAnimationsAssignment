@@ -48,12 +48,13 @@ struct CustomComposableView: View {
                                 offsetX = (geometry.size.width - 30) / 100 * score
                             }
                         }
-                    HStack {
+                    HStack{
                         Circle()
                             .scaleEffect(starScaleA)
                             .foregroundColor(starColor)
+                            .offset(x: (geometry.size.width - 30)/4)
                             .onAppear {
-                                withAnimation(Animation.linear(duration: 0.5).delay(0.33)) {
+                                withAnimation(Animation.linear(duration: 0.25).delay(0.66)) {
                                     starScaleA = 0.35
                                     starColor = Color.yellow
                                 }
@@ -61,8 +62,9 @@ struct CustomComposableView: View {
                         Circle()
                             .scaleEffect(starScaleB)
                             .foregroundColor(starColor)
+                            .offset(x: (geometry.size.width - 30)/6)
                             .onAppear {
-                                withAnimation(Animation.linear(duration: 0.5).delay(0.66)) {
+                                withAnimation(Animation.linear(duration: 0.25).delay(1.33)) {
                                     starScaleB = 0.35
                                     starColor = Color.yellow
                                 }
@@ -70,8 +72,9 @@ struct CustomComposableView: View {
                         Circle()
                             .scaleEffect(starScaleC)
                             .foregroundColor(starColor)
+                            .offset(x: (geometry.size.width - 30)/12)
                             .onAppear {
-                                withAnimation(Animation.linear(duration: 0.5).delay(1)) {
+                                withAnimation(Animation.linear(duration: 0.25).delay(2)) {
                                     starScaleC = 0.35
                                     starColor = Color.yellow
                                 }
